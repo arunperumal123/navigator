@@ -1,0 +1,26 @@
+
+Usage:
+================================
+1. Run nodejs webserver
+    cd src
+    nodejs index.js &
+2. Verify in browser if webserver is running.
+    Load below URL in any browser (firefox, IE, chrome etc)
+       http://localhost:3000/
+    It must show below string in browser.
+        "Welcome to EPG Server"
+
+3. Push EPG data in mongodb database.
+    curl -H "Content-Type: application/json" -X POST -d @test_channel.data http://localhost:3000/test_channel
+
+4. Verify in browser if you are able to get channel data
+    http://localhost:3000/test_channel
+
+
+Todo:
+================================
+1. Push bulk data (many channels and programs) in mongodb database (using json object or from text file)
+2. Delete a selected row from database.
+3. Query a selected channel and program to webserver.
+    
+    

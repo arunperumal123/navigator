@@ -1,0 +1,9 @@
+epgService/
+	epgChannelList -- list of channels
+	epgProgramList -- list of programs for specific channels
+
+http://<webservicesServer>/epgService/epgProgramList?channelNo=<integer>&startTime=<long int for epoch time>&duration=<integer in secs>
+    arguments channelNo, startTime and duration are optional
+	    default - 	All channels 
+					current time
+					Max duration (1 days)

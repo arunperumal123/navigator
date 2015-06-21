@@ -1,0 +1,48 @@
+
+Nodejs is OS independent. It can run on linux, window, mac etc.
+Below are the steps for installation on Ubuntu machine.
+
+1. Requirements:
+
+Please install following packages/libraries on your machine.
+-----------------------------
+Package         Version
+-----------------------------
+nodejs          > v0.10.33
+npm             > 1.4.28
+
+
+
+Please install following npm package
+------------------------------
+npm package         Version                   
+------------------------------
+express             > 3.3.4
+jade                > 1.7.0
+mongodb             > 1.4.20
+
+
+2. Installation.
+    2.1 Install debian packages on ubuntu machine using apt-get.
+        e.g.
+        apt-get install nodejs
+        apt-get install npm
+
+    2.2 Install npm packages either locally or globally.
+    
+        Install npm package locally
+           npm install <package_name>
+           e.g.
+           npm install express
+           npm install jade.
+           
+           local packages are stored in current directory under folder named "node_modules".
+           local packages are not available outside of current directory.
+
+        Install npm package globally
+           npm -g install <package_name>
+           e.g.
+           npm -g install express
+           
+           Global packages are stored in standard directory: /usr/lib/node_modules/
+        

@@ -1,0 +1,1 @@
+e:\curl\bin\curl.exe -H "Content-Type: application/json" -X POST -d @channel.txt http://localhost:3000/channels
