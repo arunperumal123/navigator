@@ -3,7 +3,7 @@ cloudStbApp.factory('data', [ '$http', '$q', function ($http, $q) {
   // Following function gives all channels
   function getChannelList () {
     // $http returns a promise for the url data
-    return $http({method: 'GET', url: 'http://10.78.150.94:9080/epg/channels?user=rovi'});
+    return $http({method: 'GET', url: 'http://localhost:9080/epg/channels?user=rovi'});
   }
 
   // Following function gives program info for every channel
@@ -41,7 +41,7 @@ cloudStbApp.factory('data', [ '$http', '$q', function ($http, $q) {
       var userStartTime = '2015-04-27T00:00:00Z',
           userEndTime = '2015-04-27T20:30:00Z';
 
-      var _url = 'http://10.78.150.94:9080/epg/programs?user=rovi&sourceId=' + sourceID + '&userStartTime=' + userStartTime + '&userEndTime=' + userEndTime;
+      var _url = 'http://localhost:9080/epg/programs?user=rovi&sourceId=' + sourceID + '&userStartTime=' + userStartTime + '&userEndTime=' + userEndTime;
 
       return $http({method: 'GET', url: _url});
   }
