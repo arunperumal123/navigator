@@ -1,10 +1,10 @@
 <div ng-controller="searchController">
 <section id="section4">
 	<form class="well form-search" style= 'background-color:#33CCCC'>
-		<label>Title:</label>
+		<label style='color:#ffffff;'>Title:</label>
 		<input type="text" ng-model="keywords" class="input-medium search-query" placeholder="Keywords...">
 		<!--<a ui-sref=".searchResults({title:aa})"><button type="submit" class="btn" ng-click="search()">Search</button></a>-->
-		<button type="submit" class="btn" ng-click="search()">Search</button>
+		<button type="submit" class="btn" style="background-color: #477E7E;color:#ffffff;font-weight:bold;" ng-click="search()">Search</button>
 		<p class="help-block">Search with program title</p>		
     </form>
 
@@ -15,7 +15,7 @@
 
 	<div ng-if= "searchData">
 		    <a href="#" class="list-group-item active" style= 'background-color:#33CCCC'>
-               <h2 class="list-group-item-heading" >Search Results</h2>
+               <h4 class="list-group-item-heading" >Search Results</h4>
             </a>
 		<div ng-if= "searchData">
 			<div style='max-height: 400px; overflow:auto;'>
