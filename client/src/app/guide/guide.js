@@ -12,6 +12,7 @@ cloudStbApp.controller('channelController', ['$scope', 'channelData', '$timeout'
     $scope.channelList = channelList;
 
     //VideoPlayer.play('192.168.0.33/epg/WebKit.mp4');
+	VideoPlayer.play('http://localhost:5000/src/assets/posters/sample-1.mp4');
 
 }]);
 
