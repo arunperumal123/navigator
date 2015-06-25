@@ -74,19 +74,34 @@ cloudStbApp.config(function($stateProvider, $stickyStateProvider, $urlRouterProv
     });
 
     // ViewByTime tab
-    states.push({   name: 'tabs.bytime',
-        url: 'times',
-        views: { 'timetab@tabs':
-        { templateUrl: 'templates/partials/time/timeCarousel.tpl.html'}
+    states.push({   name: 'tabs.search',
+        url: 'search',
+        views: { 'searchtab@tabs':
+        { templateUrl: 'templates/partials/search/searchCarousel.tpl.html'}
         },
+	controller: 'searchController',
         resolve: { foo: function() {
-            console.log("resolving 'foo' for tabs.viewbytime");
-            return "foo"; }
-        },
+            console.log("resolving 'foo' for tabs.search");
+            return "foo"; 
+			}
+        }/*,
         deepStateRedirect: true,
-        sticky: true
+        sticky: true*/
     });
 
+
+    states.push({ name: 'tabs.search.searchResultsInfo',
+        url: '/searchResultsInfo/:pid/:aTime',
+        controller: 'searchResultsInfoController',
+		resolve:{
+            programDetails: ['$stateParams', 'data', function($stateParams, data){
+                if ($stateParams.pid) {
+                    return data.getProgramDetails($stateParams.pid, $stateParams.aTime);
+                }
+            }]
+        },
+        templateUrl: 'templates/partials/search/searchResults.tpl.html'
+    });
     angular.forEach(states, function(state) { $stateProvider.state(state); });
 
     $urlRouterProvider.otherwise("/");
@@ -103,7 +118,7 @@ cloudStbApp.config(function($stateProvider, $stickyStateProvider, $urlRouterProv
       templateUrl: "templates/guide/guide.tpl.html",
       resolve: {
         channelData: function (data) {          
-          return data.getChannelList();
+          return getChannelList();
         }
       },
       controller: 'guideController'

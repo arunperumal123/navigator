@@ -2,6 +2,13 @@ cloudStbApp.controller('channelController', ['$scope', 'channelData', '$timeout'
 
     // Service IDs i.e. channel Ids
     var channelList = channelData.data;
+	
+    for(var i=0; i<channelList.length; i++) {
+		var channelObj= channelList[i];
+		var channelImage =(channelObj.channelImage).replace("http://172.28.11.54/epg/image_icon/","/dist/assets/channels_logo/");
+		channelObj.channelImage = channelImage;
+		channelList[i]=channelObj;
+    }
     $scope.channelList = channelList;
 
     //VideoPlayer.play('192.168.0.33/epg/WebKit.mp4');
@@ -41,7 +48,7 @@ cloudStbApp.controller('programController', ['$scope', 'data', '$stateParams', '
         /*  VideoPlayer.play(_videoURL);*/
        // VideoPlayer.play('192.168.0.33/epg/WebKit.mp4');
 
-//        playMyChannel(_channelIndex);
+        //playMyChannel(_channelIndex);
     }
 
     var _programInfo = {};
@@ -70,21 +77,78 @@ cloudStbApp.controller('programController', ['$scope', 'data', '$stateParams', '
         });
 
         //Read the twits against a program #hashTag
-        twitter.getTwits(_programInfo.Title).then(function (response) {
+        /*twitter.getTwits(_programInfo.Title).then(function (response) {
             $scope.twits = response.data.tData;
 
         }, function (error) {
 
-        });
+        });*/
     }
 
     //Tweet the current program
-    $scope.sendTweet = function () {
+    /*$scope.sendTweet = function () {
         twitter.sendTweets(_programInfo.Title).then(function (response) {
             console.log(response);
         }, function (err) {
             console.log(err);
         });
-    };
+    };*/
 
 }]);
+cloudStbApp.controller('searchController', ['$scope','data', '$stateParams', function ($scope,data, $stateParams) {
+
+    $scope.search = function () {
+		if($scope.keywords.length<3){
+			alert("Please enter atleast 3 characters for searching program");
+			return;
+		}
+		var searchReq = data.getSearchResult($scope.keywords);
+		searchReq.success(function(data, status, headers, config) {  
+			//alert(data.length);
+			
+			   for(var i=0; i<data.length; i++) {
+					var programObj= data[i];
+					var channelImage =(programObj.channelImage).replace("http://172.28.11.54/epg/image_icon/","/dist/assets/channels_logo/");
+					programObj.channelImage = channelImage;
+					data[i]=programObj;
+				}
+			$scope.searchData = data;
+
+	  });
+	};
+}]);
+
+cloudStbApp.controller('searchResultsInfoController', ['$scope', 'data', '$stateParams', 'programDetails', 'twitter', function ($scope, data, $stateParams, programDetails, twitter) {
+
+	var _programInfo = {};
+	$scope.programDetails= programDetails.data;
+    // If ProgramId exists then, we can traverse programList to find Program Info for that particular id
+    if ($stateParams.pid) {
+        var _programList =  $scope.programDetails;
+
+        angular.forEach(_programList, function(singleProgram, key) {
+            if (singleProgram.Programs['ProgramId'] === $stateParams.pid) {
+
+                //Store the Program Title in scope to be accessed in 'Tweet' Button click
+                _programInfo.Title = $scope.currentProgramTitle = singleProgram.Programs['Title'];
+                _programInfo.Category = singleProgram.Programs['Category'];
+                _programInfo.Duration = singleProgram.Programs['Duration'];
+                _programInfo.Subcategory = singleProgram.Programs['Subcategory'];
+                _programInfo.TVRating = singleProgram.Programs['TVRating'];
+                _programInfo.AiringTime = singleProgram.Programs['AiringTime'];
+                _programInfo.Dolby = singleProgram.Programs['Dolby'];
+                _programInfo.Stereo = singleProgram.Programs['Stereo'];
+
+                $scope.programInfo = _programInfo;
+            }
+        });
+
+    }
+}]);
+/*
+cloudStbApp.controller('searchController', ['$scope', 'searchData', '$timeout', function ($scope, searchData, $timeout) {
+alert('searchController');
+    // Service IDs i.e. channel Ids
+    var channelList = $scope.searchData;
+
+}]);*/

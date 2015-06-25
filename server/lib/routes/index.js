@@ -15,6 +15,38 @@ var Provider = require('../modules/');
 
  });
 
+ router.get('/search', function(req, res) {
+ 
+     var collectionName = req.app.get('collectionName');
+     var title = req.query.title;
+     Provider.getSearchResults(collectionName, title, function (result) {
+     res.json(result);
+    });
+    //res.json({name:'NC',collection:collectionName});
+ });
+ 
+ router.get('/program', function(req, res) {
+ console.log("Nishanth");
+ console.log("Nishanth"+req.query.id);
+ 
+     var collectionName = req.app.get('collectionName');
+     Provider.getProgramDetails(collectionName, req.query.id,req.query.airingTime, function (result) {
+     res.json(result);
+    });
+    //res.json({name:'NC',collection:collectionName});
+ });
+ 
+ router.get('/searchtest', function(req, res) {
+ 
+     var collectionName = req.app.get('collectionName');
+     var title = req.query.title;
+     Provider.getSearchTestResults(collectionName, title, function (result) {
+     res.json(result);
+    });
+    //res.json({name:'NC',collection:collectionName});
+ });
+
+
 // route without parameters (http://localhost:8080/epg/channels/)
 router.get('/channels', function(req, res) {
 

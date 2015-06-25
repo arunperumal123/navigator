@@ -1,8 +1,11 @@
 <section id="section1">
-    <div slick-slider="{dots: false, arrows: false, draggable: false, slidesToShow:5, infinite:false}">
+    <div slick-slider="{dots: false, arrows: TRUE, draggable: false, slidesToScroll:3,slidesToShow:5, infinite:false}">
+
         <div class="my-slide" ng-repeat="channel in channelList">
-           <!-- <a ui-sref=".channel({cid: channel.SourceId})" class="channelCarousel"><img width="140" height="140" ng-src="{{channel.channelImage}}" /></a>-->
-           <a ui-sref=".channel({cid: channel.SourceId})" class="channelCarousel ng-cloak">{{channel.SourceId}}</a>
+            <!--<a ui-sref=".channel({cid: channel.SourceId})" class="channelCarousel"><img width="140" height="140" ng-src="{{channel.channelImage}}" /></a>-->
+	    <a ui-sref=".channel({cid: channel.SourceId})" class="channelCarousel"><img width="140" height="140" ng-src="{{channel.channelImage}}" /></a>
+	    <span style="padding-left:50px;">{{channel.SourceId}}</span>
+           <!--<a ui-sref=".channel({cid: channel.SourceId})" class="channelCarousel ng-cloak">{{channel.SourceId}}</a>-->
         </div>
     </div>
 </section>

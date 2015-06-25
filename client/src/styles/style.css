@@ -53,7 +53,8 @@ video {
 
 /*---- THEME : BLUE ----*/
 .navbar-default {
-    background-color: #279ddd;
+    /*background-color: #279ddd;*/
+	background-color: #8BBBBB;
     color: #fff;
     opacity: 1;
 }
@@ -66,18 +67,22 @@ video {
 
 .navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover {
     color: #ffffff;
-    background-color: #0B73AB;
+    /*background-color: #0B73AB;*/
+    background-color: #477E7E;
+
 }
 
 #section1 {
-    background-color: #168ccc;
+    /*background-color: #92C7C7;*/
+	background-color:#33CCCC ;
     color: #dedeff;
     /*padding: 5px 0;*/
     border-radius: 4px;
 }
 
 #section2 {
-    background-color: #5F5F5F;
+   /* background-color: #5F5F5F;*/
+   background-color: #AEEAEA;
     color: #686868;
 /*    padding: 5px 0;*/
     border-radius: 4px;

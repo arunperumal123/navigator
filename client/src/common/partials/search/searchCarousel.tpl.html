@@ -1,0 +1,75 @@
+<div ng-controller="searchController">
+<section id="section4">
+	<form class="well form-search" style= 'background-color:#33CCCC'>
+		<label>Title:</label>
+		<input type="text" ng-model="keywords" class="input-medium search-query" placeholder="Keywords...">
+		<!--<a ui-sref=".searchResults({title:aa})"><button type="submit" class="btn" ng-click="search()">Search</button></a>-->
+		<button type="submit" class="btn" ng-click="search()">Search</button>
+		<p class="help-block">Search with program title</p>		
+    </form>
+
+</section>
+
+
+<section id="section5">
+
+	<div ng-if= "searchData" style='max-height: 400px; overflow:auto;'>
+		<h4>Search Results</h4>
+		<div ng-if= "searchData">
+
+			<div class="col-md-12" ng-repeat="programList in searchData">
+				<a ui-sref=".searchResultsInfo({aTime:programList.Programs['AiringTime'] , pid: programList.Programs['ProgramId']})" class="list-group-item">
+					<img width="50" height="50" ng-src="{{programList.channelImage}}" />
+					<span style="padding-left:50px;">
+						{{programList.Programs.Title}}
+					</span>
+				</a>
+				<br/>
+			</div>
+		</div>
+		<div ng-if="searchData.length==0">
+			<span> No search results found...</span>
+		</div>
+	</div>
+</section>
+</div>
+<div ui-view></div>
+
+    <!--        
+	<div style='height:400px;overflow:auto;'>
+		<h4>Search Results</h4>
+		<div class="col-md-12" ng-repeat="programList in searchData">
+			<a ui-sref=".searchResults({pid: programList.Programs['ProgramId']})" class="list-group-item">
+				<span style='width:300px;height:60px;float:left;'>
+					<img width="50" height="50" ng-src="{{programList.channelImage}}" />
+				</span>
+				
+				<span style='width:300px;height:60px;float:left;'>
+					{{programList.Programs.Title}}
+				</span>
+				<span style='width:300px;float:left;height:60px;'>
+					{{programList.SourceId}}
+				</span>
+				<span style='width:300px;float:left;height:60px;'>
+					{{programList.Programs.Category}}
+				</span>
+			</a>
+			<br/>
+		</div>
+	</div>
+	-->	
+<!--
+
+
+<div class="col-md-12" ng-repeat="channel in searchData">
+ssss
+    <div class="form-group">
+	<div>aaaa {{channel.length}} {{channel._id}}</div>
+            <div>{{channel._id}}</div>
+			
+				    <a ui-sref=".channel({cid: channel.SourceId})" class="channelCarousel"><img width="140" height="140" ng-src="{{channel.channelImage}}" /></a>
+	    <span style="padding-left:50px;">{{channel.SourceId}}</span>
+
+    </div>
+</div>-->
+</div>
