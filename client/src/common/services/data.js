@@ -1,4 +1,4 @@
-var serverUrl = "http://localhost:9080/";
+var serverUrl = "https://aqueous-ocean-8272.herokuapp.com/";
 
 cloudStbApp.factory('data', [ '$http', '$q', function ($http, $q) {
 
